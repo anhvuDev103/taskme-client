@@ -1,4 +1,4 @@
-import Button from 'components/Button';
+import Button, { StyledButton } from 'components/Button';
 import { CloseIc } from 'components/Icons';
 import { Flex, Text } from 'components/UIkit';
 import { StyledModal } from 'components/UIkit/modal';
@@ -23,7 +23,9 @@ const Modal = ({ title, children, onAgree, agreeText = 'Done', onCancel }: Props
       <ModalContent>{children}</ModalContent>
       <ModalFooter>
         <Button onClick={onCancel}>Cancel</Button>
-        <Button onClick={onAgree}>{agreeText}</Button>
+        <Button primary onClick={onAgree}>
+          {agreeText}
+        </Button>
       </ModalFooter>
     </StyledModal>
   );
@@ -33,6 +35,14 @@ const ModalHeader = styled(Flex)`
   color: ${({ theme }) => theme.color.text};
   font-size: 20px !important;
   font-weight: bold;
+
+  ${StyledButton} {
+    background-color: transparent;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.color.mediumGray};
+    }
+  }
 `;
 
 const ModalContent = styled.div`
@@ -44,8 +54,9 @@ const ModalFooter = styled(Flex)`
   justify-content: flex-end !important;
   gap: 16px;
 
-  button {
+  ${StyledButton} {
     width: unset;
+    height: 32px;
     padding: 0 12px;
     font-weight: 600;
   }

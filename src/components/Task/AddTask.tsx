@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { PlusIc } from 'components/Icons';
 import { Flex, Text } from 'components/UIkit';
-import Button from 'components/Button';
+import Button, { StyledButton } from 'components/Button';
 
 const AddTask = () => {
   return (
@@ -28,6 +28,17 @@ const StyledAddTask = styled(Flex)`
     button {
       color: #fff;
       background-color: ${({ theme }) => theme.color.primary};
+    }
+  }
+
+  > ${StyledButton} {
+    width: 18px;
+    height: 18px;
+    border-radius: ${({ theme }) => theme.radius.full};
+
+    svg {
+      width: 18px;
+      height: 18px;
     }
   }
 `;

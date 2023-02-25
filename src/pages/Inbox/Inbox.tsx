@@ -7,7 +7,7 @@ import TaskItem from 'components/Task/TaskItem';
 import useModal from 'hooks/useModal';
 import CommentModal from './components/CommentModal';
 import AddTask from 'components/Task/AddTask';
-import Button from 'components/Button';
+import Button, { StyledButton } from 'components/Button';
 
 const Inbox = () => {
   const [handlePresent] = useModal(
@@ -19,34 +19,36 @@ const Inbox = () => {
   );
 
   return (
-    <PageLayout>
+    <InboxLayout>
       <PageHeader mb="8px">
         <Text fontWeight="bold" fontSize="20px">
           Inbox
         </Text>
         <Option>
-          <StyledButton Icon={CommentIc} onClick={handlePresent}>
+          <Button Icon={CommentIc} onClick={handlePresent}>
             Comments
-          </StyledButton>
-          <StyledButton transparentBg Icon={ConfigIc}>
+          </Button>
+          <Button transparentBg Icon={ConfigIc}>
             View
-          </StyledButton>
-          <StyledButton Icon={MeatballsMenuIc} />
+          </Button>
+          <Button Icon={MeatballsMenuIc} />
         </Option>
       </PageHeader>
       <PageBody flexDirection="column">
         <TaskItem />
         <AddTask />
       </PageBody>
-    </PageLayout>
+    </InboxLayout>
   );
 };
 
-const StyledButton = styled(Button)`
-  background: transparent;
+const InboxLayout = styled(PageLayout)`
+  ${StyledButton} {
+    background-color: transparent;
 
-  &:hover {
-    background: ${({ theme }) => theme.baseColor.grayAlpha};
+    &:hover {
+      background-color: ${({ theme }) => theme.color.mediumGray};
+    }
   }
 `;
 

@@ -29,12 +29,7 @@ export const StyledButton = styled.button`
   .button-label {
     font-weight: 600;
     font-size: 12px;
-    line-height: 10px;
     margin: 0 6px 0 3px;
-  }
-
-  &:hover {
-    /* background-color: ${({ theme }) => theme.baseColor.grayAlpha}; */
   }
 
   svg {

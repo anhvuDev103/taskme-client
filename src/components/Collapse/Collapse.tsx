@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Flex, Text } from 'components/UIkit';
 import { DownChevronIc, PlusIc } from 'components/Icons';
 import { Option } from 'components/Sidebar/types';
-import Button from 'components/Button';
+import Button, { StyledButton } from 'components/Button';
 
 interface Props {
   title: string;
@@ -29,7 +29,11 @@ const Collapse = ({ title, renderOption, options }: Props) => {
       <HeaderCollapse>
         <Text>{title}</Text>
         <Button Icon={PlusIc} />
-        <Button Icon={DownChevronIc} />
+        <Button
+          Icon={DownChevronIc}
+          className="chevron-btn"
+          onClick={() => setIsVisible((prev) => !prev)}
+        />
       </HeaderCollapse>
       <BodyCollapse
         flexDirection="column"
@@ -41,7 +45,29 @@ const Collapse = ({ title, renderOption, options }: Props) => {
   );
 };
 
-const HeaderCollapse = styled(Flex)``;
+const HeaderCollapse = styled(Flex)`
+  gap: 4px;
+
+  ${StyledButton} {
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
+    color: #666;
+
+    &:hover {
+      color: ${({ theme }) => theme.baseColor.blackHover};
+    }
+
+    &.chevron-btn {
+      rotate: 90deg;
+      transition: 200ms;
+    }
+
+    &:not(:last-child) {
+      margin-left: auto;
+    }
+  }
+`;
 
 const BodyCollapse = styled(Flex)`
   width: 100%;
@@ -64,24 +90,9 @@ const StyledCollapse = styled(Flex)`
     padding: 4px;
   }
 
-  button {
-    &:hover {
-      color: ${({ theme }) => theme.baseColor.blackHover};
-    }
-
-    &.chevron-btn {
-      rotate: 90deg;
-      transition: 200ms;
-    }
-  }
-
   &.active {
-    button {
+    ${StyledButton} {
       rotate: 0deg;
-    }
-
-    ${BodyCollapse} {
-      max-height: 68px;
     }
   }
 `;

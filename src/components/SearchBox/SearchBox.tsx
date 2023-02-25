@@ -8,7 +8,7 @@ import { CloseIc, DotIc, HelpIc, SearchIc } from 'components/Icons';
 import { SIDEBAR_ITEMS } from 'components/Sidebar/feed';
 import { SidebarItemType } from 'components/Sidebar/types';
 import useClick from 'hooks/useClick';
-import Button from 'components/Button';
+import Button, { StyledButton } from 'components/Button';
 
 const RenderRecentlySearch = ({ ...attrs }) => {
   return (
@@ -51,7 +51,6 @@ const SearchBox = () => {
         bg={theme.baseColor.grayAlpha}
         width={218}
         height={30}
-        ml="4px"
         p="2px 5px"
         borderRadius={theme.radius.tiny}
         id="searchBox"
@@ -61,9 +60,7 @@ const SearchBox = () => {
         <StyledInput placeholder="Search" height="24px" width="100%" />
         <Button Icon={HelpIc} />
         <Button Icon={CloseIc} />
-        <Button transparentBg variant="outline" width="18px" height="18px" flexShrink={0}>
-          /
-        </Button>
+        <Button className="hotKeySearch-btn">/</Button>
       </StyledSearchBox>
     </Popper>
   );
@@ -72,12 +69,22 @@ const SearchBox = () => {
 const StyledSearchBox = styled(Flex)`
   transition: 300ms;
 
-  button {
+  ${StyledButton} {
     display: none;
 
-    &:last-child {
+    &.hotKeySearch-btn {
+      width: 18px;
+      height: 18px;
       display: inline-flex;
+      padding: 0 8px;
       opacity: 0;
+      border: 1px solid ${({ theme }) => theme.color.mediumGray};
+      border-radius: ${({ theme }) => theme.radius.tiny};
+    }
+
+    span.button-label {
+      margin: 0 auto 3px;
+      line-height: 18px;
     }
   }
 

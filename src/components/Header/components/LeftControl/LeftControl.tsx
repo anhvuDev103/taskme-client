@@ -3,8 +3,8 @@ import React from 'react';
 import { Flex } from 'components/UIkit';
 import { HomeIc, MenuIc } from 'components/Icons';
 import SearchBox from 'components/SearchBox';
-import styled, { useTheme } from 'styled-components';
-import Button from 'components/Button';
+import styled from 'styled-components';
+import Button, { StyledButton } from 'components/Button';
 
 interface Props {
   setIsVisible: any;
@@ -16,17 +16,22 @@ const LeftControl = ({ setIsVisible }: Props) => {
   };
 
   return (
-    <Flex pl="5px">
-      <StyledButton Icon={MenuIc} onClick={toggleSidebarHandler} />
-      <StyledButton Icon={HomeIc} />
+    <Wrapper>
+      <Button Icon={MenuIc} onClick={toggleSidebarHandler} />
+      <Button Icon={HomeIc} />
       <SearchBox />
-    </Flex>
+    </Wrapper>
   );
 };
 
-const StyledButton = styled(Button)`
-  width: 28px;
-  height: 28px;
+const Wrapper = styled(Flex)`
+  gap: 4px;
+  padding-left: 5px;
+
+  ${StyledButton} {
+    width: 28px;
+    height: 28px;
+  }
 `;
 
 export default LeftControl;
