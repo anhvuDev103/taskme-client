@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 
 import { Flex, Text } from 'components/UIkit';
 import { DownChevronIc, PlusIc } from 'components/Icons';
@@ -15,7 +15,6 @@ interface Props {
 const Collapse = ({ title, renderOption, options }: Props) => {
   const [isVisible, setIsVisible] = useState(false);
   const [heightOption, setHeightOption] = useState(0);
-  const theme: any = useTheme();
   const optionRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {

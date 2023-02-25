@@ -1,14 +1,11 @@
 import React from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 
 import { PlusIc } from 'components/Icons';
 import { Flex, Text } from 'components/UIkit';
-import useClick from 'hooks/useClick';
 import Button from 'components/Button';
 
 const AddTask = () => {
-  const theme: any = useTheme();
-
   return (
     <StyledAddTask>
       <Button Icon={PlusIc} />

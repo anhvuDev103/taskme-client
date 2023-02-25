@@ -7,7 +7,6 @@ import Popper, { PopperWrapper } from 'components/Popper';
 import { CloseIc, DotIc, HelpIc, SearchIc } from 'components/Icons';
 import { SIDEBAR_ITEMS } from 'components/Sidebar/feed';
 import { SidebarItemType } from 'components/Sidebar/types';
-import useKeypress from 'hooks/useKeypress';
 import useClick from 'hooks/useClick';
 import Button from 'components/Button';
 
@@ -32,7 +31,7 @@ const RenderRecentlySearch = ({ ...attrs }) => {
 
 const SearchBox = () => {
   const theme: any = useTheme();
-  const isPressedEscape = useKeypress('Escape');
+  // const isPressedEscape = useKeypress('Escape');
   const isClicked = useClick('#searchBox', '#searchBox-popper');
   const [isActive, setIsActive] = useState(false);
 

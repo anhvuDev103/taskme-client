@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-
-import { Flex, Keycap, Text } from 'components/UIkit';
+import { Flex } from 'components/UIkit';
 import { HelpIc, NotificationIc, PlusIc, TrendingUpIc } from 'components/Icons';
 import Avatar from 'components/Avatar';
 
@@ -10,7 +8,7 @@ import Button from 'components/Button';
 import styled from 'styled-components';
 
 const RightControl = () => {
-  const [handlePresent, onDismiss] = useModal(<TaskModal />);
+  const [handlePresent] = useModal(<TaskModal />);
   return (
     <Flex gridGap="5px" px="12px">
       <StyledButton Icon={PlusIc} onClick={handlePresent} />

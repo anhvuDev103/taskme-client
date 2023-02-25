@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 
-import { Box, Flex, PageLayout, Text } from 'components/UIkit';
+import { Flex, PageLayout, Text } from 'components/UIkit';
 import { CommentIc, ConfigIc, MeatballsMenuIc } from 'components/Icons';
 import TaskItem from 'components/Task/TaskItem';
 import useModal from 'hooks/useModal';
@@ -10,8 +10,7 @@ import AddTask from 'components/Task/AddTask';
 import Button from 'components/Button';
 
 const Inbox = () => {
-  const theme: any = useTheme();
-  const [handlePresent, onDismiss] = useModal(
+  const [handlePresent] = useModal(
     <CommentModal
       onAgree={() => {
         console.log('success');
