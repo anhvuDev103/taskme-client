@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styled, { useTheme } from 'styled-components';
+import React, { useEffect, useRef, useState } from "react";
+import styled, { useTheme } from "styled-components";
 
-import { Button, Flex, Text } from 'components/UIkit';
-import { DownChevronIc, PlusIc } from 'components/Icons';
-import { Option } from 'components/Sidebar/types';
+import { Button, Flex, Text } from "components/UIkit";
+import { DownChevronIc, PlusIc } from "components/Icons";
+import { Option } from "components/Sidebar/types";
 
 interface Props {
   title: string;
@@ -25,7 +25,10 @@ const SidebarDropdown = ({ title, renderOption, options }: Props) => {
   }, [isVisible]);
 
   return (
-    <StyledSidebarDropdown flexDirection="column" className={`${isVisible ? 'active' : ''}`}>
+    <StyledSidebarDropdown
+      flexDirection="column"
+      className={`${isVisible ? "active" : ""}`}
+    >
       <HeaderDropdown>
         <Text>{title}</Text>
         <Button
@@ -39,6 +42,7 @@ const SidebarDropdown = ({ title, renderOption, options }: Props) => {
           <PlusIc />
         </Button>
         <Button
+          transparentBg
           width={28}
           height={28}
           color={theme.baseColor.grayAlphaSecondary}

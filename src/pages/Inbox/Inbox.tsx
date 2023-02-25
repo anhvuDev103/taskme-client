@@ -1,27 +1,24 @@
-import React from 'react';
-import styled, { useTheme } from 'styled-components';
+import React from "react";
+import styled, { useTheme } from "styled-components";
 
-import { Box, Button, Flex, PageLayout, Text } from 'components/UIkit';
-import { CommentIc, ConfigIc, MeatballsMenuIc } from 'components/Icons';
-import Tooltip from 'components/Tooltip';
-import TaskItem from 'components/Task/TaskItem';
-import useModal from 'hooks/useModal';
-import CommentModal from './components/CommentModal';
+import { Box, Button, Flex, PageLayout, Text } from "components/UIkit";
+import { CommentIc, ConfigIc, MeatballsMenuIc } from "components/Icons";
+import Tooltip from "components/Tooltip";
+import TaskItem from "components/Task/TaskItem";
+import useModal from "hooks/useModal";
+import CommentModal from "./components/CommentModal";
+import AddTask from "components/Task/AddTask";
 
 const Inbox = () => {
   const theme: any = useTheme();
   const [handlePresent, onDismiss] = useModal(
     <CommentModal
       onAgree={() => {
-        console.log('success');
-        // onDismiss();
-      }}
-      onDismiss={() => {
-        console.log('vai ca lon');
+        console.log("success");
       }}
     />
   );
-  console.log('Inbox ~ onDismiss:', onDismiss);
+  console.log("Inbox ~ onDismiss:", onDismiss);
   return (
     <PageLayout>
       <Flex mb="8px">
@@ -74,6 +71,7 @@ const Inbox = () => {
       </Flex>
       <Flex flexDirection="column">
         <TaskItem />
+        <AddTask />
       </Flex>
     </PageLayout>
   );

@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import styled, { useTheme } from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled, { useTheme } from "styled-components";
 
-import Input from 'components/Input';
-import { Box, Button, Flex, StyledLink, Text } from 'components/UIkit';
-import Popper, { PopperWrapper } from 'components/Popper';
-import { CloseIc, DotIc, HelpIc, SearchIc } from 'components/Icons';
-import { SIDEBAR_ITEMS } from 'components/Sidebar/feed';
-import { SidebarItemType } from 'components/Sidebar/types';
-import Tooltip from 'components/Tooltip';
+import Input from "components/Input";
+import { Box, Button, Flex, StyledLink, Text } from "components/UIkit";
+import Popper, { PopperWrapper } from "components/Popper";
+import { CloseIc, DotIc, HelpIc, SearchIc } from "components/Icons";
+import { SIDEBAR_ITEMS } from "components/Sidebar/feed";
+import { SidebarItemType } from "components/Sidebar/types";
+import Tooltip from "components/Tooltip";
+import useKeypress from "hooks/useKeypress";
+import useClick from "hooks/useClick";
 
 const RenderRecentlySearch = ({ ...attrs }) => {
   return (
@@ -30,20 +32,13 @@ const RenderRecentlySearch = ({ ...attrs }) => {
 
 const SearchBox = () => {
   const theme: any = useTheme();
+  const isPressedEscape = useKeypress("Escape");
+  const isClicked = useClick("#searchBox", "#searchBox-popper");
   const [isActive, setIsActive] = useState(false);
 
-  const handleClick = (e: any) => {
-    if (e.target.closest('#searchBox') || e.target.closest('#searchBox-popper')) {
-      setIsActive(true);
-      return;
-    }
-    setIsActive(false);
-  };
-
   useEffect(() => {
-    window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
-  }, []);
+    setIsActive(isClicked);
+  }, [isClicked]);
 
   return (
     <Popper
@@ -51,7 +46,9 @@ const SearchBox = () => {
       interactive={true}
       offset={[0, 4]}
       placement="bottom-start"
-      render={(attrs) => <RenderRecentlySearch {...attrs} id="searchBox-popper" />}
+      render={(attrs) => (
+        <RenderRecentlySearch {...attrs} id="searchBox-popper" />
+      )}
     >
       <StyledSearchBox
         bg={theme.baseColor.grayAlpha}
@@ -61,7 +58,7 @@ const SearchBox = () => {
         p="2px 5px"
         borderRadius={theme.radius.tiny}
         id="searchBox"
-        className={`${isActive ? 'active' : ''}`}
+        className={`${isActive ? "active" : ""}`}
       >
         <SearchIc width="24" height="24" style={{ flexShrink: 0 }} />
         <StyledInput placeholder="Search" height="24px" width="100%" />
@@ -74,10 +71,22 @@ const SearchBox = () => {
         >
           How to use search
         </Tooltip>
-        <Button transparentBg width="24px" height="24px" flexShrink={0} ml="5px">
+        <Button
+          transparentBg
+          width="24px"
+          height="24px"
+          flexShrink={0}
+          ml="5px"
+        >
           <CloseIc width="18" height="18" />
         </Button>
-        <Button transparentBg variant="outline" width="18px" height="18px" flexShrink={0}>
+        <Button
+          transparentBg
+          variant="outline"
+          width="18px"
+          height="18px"
+          flexShrink={0}
+        >
           /
         </Button>
       </StyledSearchBox>

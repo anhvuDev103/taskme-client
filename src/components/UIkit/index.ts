@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import {
   ColorProps,
   SpaceProps,
@@ -16,7 +16,7 @@ import {
   flexbox,
   grid,
   variant,
-} from 'styled-system';
+} from "styled-system";
 
 //TYPES
 interface StyleProps
@@ -40,21 +40,26 @@ const buttonVariant = ({ theme }: any) =>
   variant({
     variants: {
       outline: {
-        border: '1px solid #dddddd',
+        border: "1px solid #dddddd",
       },
       primary: {
         backgroundColor: theme.color.primary,
-        color: '#fff',
+        color: "#fff",
 
-        '&:hover': {
-          backgroundColor: '#b03d32',
+        "&:hover": {
+          backgroundColor: "#b03d32",
         },
+      },
+      circle: {
+        width: "17px",
+        height: "17px",
+        borderRadius: theme.radius.full,
       },
     },
   });
 
-export const Button = styled('button')<StyleButton>`
-  width: ${({ fullWidth }) => (fullWidth ? 'fit-content' : '28px')};
+export const Button = styled("button")<StyleButton>`
+  width: ${({ fullWidth }) => (fullWidth ? "fit-content" : "28px")};
   height: 28px;
   display: inline-flex;
   justify-content: center;
@@ -64,13 +69,15 @@ export const Button = styled('button')<StyleButton>`
   padding: 0;
   color: ${({ theme }) => theme.color.gray};
   border-radius: ${({ theme }) => theme.radius.tiny};
-  background-color: ${({ transparentBg }) => (transparentBg ? 'transparent' : '#e5e5e5')};
+  background-color: ${({ transparentBg }) =>
+    transparentBg ? "transparent" : "#e5e5e5"};
   border: none;
   outline: none;
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme, hoverColor }) => hoverColor || theme.color.mediumGray};
+    background-color: ${({ theme, hoverColor }) =>
+      hoverColor || theme.color.mediumGray};
   }
 
   ${color}
