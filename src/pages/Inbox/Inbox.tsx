@@ -1,21 +1,21 @@
 import React from 'react';
-import { Box, Button, Flex, PageLayout, Text } from 'components/UIkit';
 import styled, { useTheme } from 'styled-components';
-import {
-  CommentIc,
-  ConfigIc,
-  MeatballsMenuIc,
-  MiniCalendarIc,
-  MiniCommentIc,
-  PencilIc,
-} from 'components/Icons';
+
+import { Box, Button, Flex, PageLayout, Text } from 'components/UIkit';
+import { CommentIc, ConfigIc, MeatballsMenuIc } from 'components/Icons';
 import Tooltip from 'components/Tooltip';
+import TaskItem from 'components/Task/TaskItem';
+import useModal from 'hooks/useModal';
+import CommentModal from './components/CommentModal';
 
 const Inbox = () => {
   const theme: any = useTheme();
+  const [handlePresent, onDismiss] = useModal(
+    <CommentModal onAgree={() => console.log('success')} onDismiss={onDismiss} />
+  );
   return (
     <PageLayout>
-      <Flex>
+      <Flex mb="8px">
         <Text fontWeight="bold" fontSize="20px">
           Inbox
         </Text>
@@ -23,10 +23,12 @@ const Inbox = () => {
           <Tooltip
             handler={
               <Button
+                transparentBg
                 ml="16px"
                 fullWidth
                 hoverColor={theme.color.mediumGray}
                 color={theme.color.gray}
+                onClick={handlePresent}
               >
                 <Flex>
                   <CommentIc />
@@ -37,13 +39,24 @@ const Inbox = () => {
           >
             Comment
           </Tooltip>
-          <Button ml="16px" fullWidth hoverColor={theme.color.mediumGray} color={theme.color.gray}>
+          <Button
+            transparentBg
+            ml="16px"
+            fullWidth
+            hoverColor={theme.color.mediumGray}
+            color={theme.color.gray}
+          >
             <Flex>
               <ConfigIc />
               <Box m="0 5px 0 3px">View</Box>
             </Flex>
           </Button>
-          <Button ml="16px" hoverColor={theme.color.mediumGray} color={theme.color.gray}>
+          <Button
+            transparentBg
+            ml="16px"
+            hoverColor={theme.color.mediumGray}
+            color={theme.color.gray}
+          >
             <Flex>
               <MeatballsMenuIc />
             </Flex>
@@ -51,29 +64,7 @@ const Inbox = () => {
         </Option>
       </Flex>
       <Flex flexDirection="column">
-        <Flex
-          alignItems="flex-start !important"
-          width="100%"
-          justifyContent="flex-start !important"
-        >
-          <input type="checkbox" name="" id="" />
-          <div>
-            <Text>title task</Text>
-            <Flex gridGap="8px">
-              <Flex color={theme.color.primary}>
-                <MiniCalendarIc /> 16 Feb
-              </Flex>
-              <Flex gridGap="2px">
-                <MiniCommentIc />1
-              </Flex>
-            </Flex>
-          </div>
-          <Flex>
-            <Button>
-              <PencilIc />
-            </Button>
-          </Flex>
-        </Flex>
+        <TaskItem />
       </Flex>
     </PageLayout>
   );

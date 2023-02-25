@@ -14,7 +14,7 @@ const RightControl = () => {
     <Flex gridGap="5px" px="12px">
       <Tooltip
         handler={
-          <Button width={32} height={32} onClick={handlePresent}>
+          <Button transparentBg width={32} height={32} onClick={handlePresent}>
             <PlusIc />
           </Button>
         }
@@ -23,14 +23,14 @@ const RightControl = () => {
           Add task <Keycap>Q</Keycap>
         </Flex>
       </Tooltip>
-      <Button width="fit-content" height={32} p="5px">
+      <Button transparentBg width="fit-content" height={32} p="5px">
         <TrendingUpIc />
         <Text ml="5px">0/5</Text>
       </Button>
-      <Button width={32} height={32}>
+      <Button transparentBg width={32} height={32}>
         <HelpIc />
       </Button>
-      <Button width={32} height={32}>
+      <Button transparentBg width={32} height={32}>
         <NotificationIc />
       </Button>
       <Avatar ml="8px" />

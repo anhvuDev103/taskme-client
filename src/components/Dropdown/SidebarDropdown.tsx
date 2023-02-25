@@ -28,7 +28,14 @@ const SidebarDropdown = ({ title, renderOption, options }: Props) => {
     <StyledSidebarDropdown flexDirection="column" className={`${isVisible ? 'active' : ''}`}>
       <HeaderDropdown>
         <Text>{title}</Text>
-        <Button width={28} height={28} color={theme.baseColor.grayAlphaSecondary} ml="auto" p="3px">
+        <Button
+          transparentBg
+          width={28}
+          height={28}
+          color={theme.baseColor.grayAlphaSecondary}
+          ml="auto"
+          p="3px"
+        >
           <PlusIc />
         </Button>
         <Button

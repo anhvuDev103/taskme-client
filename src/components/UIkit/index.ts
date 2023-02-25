@@ -32,22 +32,28 @@ interface StyleButton extends StyleProps {
   variant?: string;
   hoverColor?: string;
   fullWidth?: boolean;
+  transparentBg?: boolean;
 }
 
 //BUTTON
-const buttonVariant = variant({
-  variants: {
-    outline: {
-      border: `1px solid #dddddd`,
-    },
-    // square: {
-    //   rounded: 'none',
-    //   bg: 'green',
-    // },
-  },
-});
+const buttonVariant = ({ theme }: any) =>
+  variant({
+    variants: {
+      outline: {
+        border: '1px solid #dddddd',
+      },
+      primary: {
+        backgroundColor: theme.color.primary,
+        color: '#fff',
 
-export const Button = styled.button<StyleButton>`
+        '&:hover': {
+          backgroundColor: '#b03d32',
+        },
+      },
+    },
+  });
+
+export const Button = styled('button')<StyleButton>`
   width: ${({ fullWidth }) => (fullWidth ? 'fit-content' : '28px')};
   height: 28px;
   display: inline-flex;
@@ -58,14 +64,13 @@ export const Button = styled.button<StyleButton>`
   padding: 0;
   color: ${({ theme }) => theme.color.gray};
   border-radius: ${({ theme }) => theme.radius.tiny};
-  background-color: transparent;
+  background-color: ${({ transparentBg }) => (transparentBg ? 'transparent' : '#e5e5e5')};
   border: none;
   outline: none;
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme, hoverColor }) => hoverColor || theme.baseColor.grayAlpha};
-    /* color: ${({ theme }) => theme.color.text}; */
+    background-color: ${({ theme, hoverColor }) => hoverColor || theme.color.mediumGray};
   }
 
   ${color}

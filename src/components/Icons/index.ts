@@ -1,25 +1,27 @@
-import { default as MenuIc } from './Menu';
-import { default as HomeIc } from './Home';
-import { default as SearchIc } from './Search';
-import { default as CloseIc } from './Close';
-import { default as HelpIc } from './Help';
-import { default as PlusIc } from './Plus';
-import { default as TrendingUpIc } from './TrendingUp';
-import { default as NotificationIc } from './Notification';
-import { default as InboxIc } from './Inbox';
-import { default as TodayIc } from './Today';
-import { default as CalendarIc } from './Calendar';
-import { default as FilterIc } from './Filter';
-import { default as DownChevronIc } from './DownChevron';
-import { default as DotIc } from './Dot';
-import { default as CommentIc } from './Comment';
-import { default as MeatballsMenuIc } from './MeatballsMenu';
-import { default as ConfigIc } from './Config';
-import { default as MiniCalendarIc } from './MiniCalendar';
-import { default as MiniCommentIc } from './MiniComment';
-import { default as DueDateIc } from './DueDate';
-import { default as MeatballsMenuSolidIc } from './MeatballsMenuSolid';
-import { default as PencilIc } from './Pencil';
+import { default as MenuIc } from './components/Menu';
+import { default as HomeIc } from './components/Home';
+import { default as SearchIc } from './components/Search';
+import { default as CloseIc } from './components/Close';
+import { default as HelpIc } from './components/Help';
+import { default as PlusIc } from './components/Plus';
+import { default as TrendingUpIc } from './components/TrendingUp';
+import { default as NotificationIc } from './components/Notification';
+import { default as InboxIc } from './components/Inbox';
+import { default as TodayIc } from './components/Today';
+import { default as CalendarIc } from './components/Calendar';
+import { default as FilterIc } from './components/Filter';
+import { default as DownChevronIc } from './components/DownChevron';
+import { default as DotIc } from './components/Dot';
+import { default as CommentIc } from './components/Comment';
+import { default as MeatballsMenuIc } from './components/MeatballsMenu';
+import { default as ConfigIc } from './components/Config';
+import { default as MiniCalendarIc } from './components/MiniCalendar';
+import { default as MiniCommentIc } from './components/MiniComment';
+import { default as DueDateIc } from './components/DueDate';
+import { default as MeatballsMenuSolidIc } from './components/MeatballsMenuSolid';
+import { default as PencilIc } from './components/Pencil';
+import { default as CheckIc } from './components/Check';
+import { default as DragIc } from './components/Drag';
 
 export {
   MenuIc,
@@ -44,4 +46,6 @@ export {
   DueDateIc,
   MeatballsMenuSolidIc,
   PencilIc,
+  CheckIc,
+  DragIc,
 };

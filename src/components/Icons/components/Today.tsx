@@ -1,5 +1,5 @@
 import React from 'react';
-import Svg from './Svg';
+import Svg from '../Svg';
 
 const Today = (prop: any) => {
   const currentDate = new Date();

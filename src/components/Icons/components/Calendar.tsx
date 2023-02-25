@@ -1,7 +1,7 @@
 import React from 'react';
-import Svg from './Svg';
+import Svg from '../Svg';
 
-const Today = (prop: any) => {
+const Calendar = (prop: any) => {
   return (
     <Svg {...prop}>
       <g fill="currentColor" fillRule="nonzero">
@@ -12,4 +12,4 @@ const Today = (prop: any) => {
   );
 };
 
-export default Today;
+export default Calendar;

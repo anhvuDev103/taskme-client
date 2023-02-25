@@ -67,17 +67,17 @@ const SearchBox = () => {
         <StyledInput placeholder="Search" height="24px" width="100%" />
         <Tooltip
           handler={
-            <Button width="24px" height="24px" flexShrink={0}>
+            <Button transparentBg width="24px" height="24px" flexShrink={0}>
               <HelpIc width="24" height="24" />
             </Button>
           }
         >
           How to use search
         </Tooltip>
-        <Button width="24px" height="24px" flexShrink={0} ml="5px">
+        <Button transparentBg width="24px" height="24px" flexShrink={0} ml="5px">
           <CloseIc width="18" height="18" />
         </Button>
-        <Button variant="outline" width="18px" height="18px" flexShrink={0}>
+        <Button transparentBg variant="outline" width="18px" height="18px" flexShrink={0}>
           /
         </Button>
       </StyledSearchBox>

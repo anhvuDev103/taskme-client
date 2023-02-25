@@ -66,7 +66,7 @@ const StyledModalWrapper = styled.div`
 const StyledModalBackdrop = styled.div`
   position: absolute;
   inset: 0;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export default Modals;
