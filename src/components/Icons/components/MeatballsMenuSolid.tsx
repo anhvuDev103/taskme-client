@@ -14,7 +14,7 @@ const MeatballsMenuSolid = (prop: any) => {
       <g
         fill="currentColor"
         stroke="currentColor"
-        stroke-linecap="round"
+        strokeLinecap="round"
         transform="translate(3 10)"
       >
         <circle cx="2" cy="2" r="1.5"></circle>

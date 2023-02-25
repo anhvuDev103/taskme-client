@@ -4,7 +4,7 @@ import Svg from '../Svg';
 const Pencil = (prop: any) => {
   return (
     <Svg width="24" height="24" {...prop}>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path fill="currentColor" d="M9.5 19h10a.5.5 0 110 1h-10a.5.5 0 110-1z"></path>
         <path
           stroke="currentColor"

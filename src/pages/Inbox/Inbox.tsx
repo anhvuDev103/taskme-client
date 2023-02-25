@@ -11,8 +11,17 @@ import CommentModal from './components/CommentModal';
 const Inbox = () => {
   const theme: any = useTheme();
   const [handlePresent, onDismiss] = useModal(
-    <CommentModal onAgree={() => console.log('success')} onDismiss={onDismiss} />
+    <CommentModal
+      onAgree={() => {
+        console.log('success');
+        // onDismiss();
+      }}
+      onDismiss={() => {
+        console.log('vai ca lon');
+      }}
+    />
   );
+  console.log('Inbox ~ onDismiss:', onDismiss);
   return (
     <PageLayout>
       <Flex mb="8px">
