@@ -1,5 +1,6 @@
+import Button from 'components/Button';
 import { CloseIc } from 'components/Icons';
-import { Button, Flex, Text } from 'components/UIkit';
+import { Flex, Text } from 'components/UIkit';
 import { StyledModal } from 'components/UIkit/modal';
 import React from 'react';
 import styled from 'styled-components';
@@ -17,18 +18,12 @@ const Modal = ({ title, children, onAgree, agreeText = 'Done', onCancel }: Props
     <StyledModal>
       <ModalHeader>
         <Text>{title}</Text>
-        <Button transparentBg onClick={onCancel}>
-          <CloseIc />
-        </Button>
+        <Button Icon={CloseIc} onClick={onCancel} />
       </ModalHeader>
       <ModalContent>{children}</ModalContent>
       <ModalFooter>
-        <Button color="#444" onClick={onCancel}>
-          Cancel
-        </Button>
-        <Button variant="primary" onClick={onAgree}>
-          {agreeText}
-        </Button>
+        <Button onClick={onCancel}>Cancel</Button>
+        <Button onClick={onAgree}>{agreeText}</Button>
       </ModalFooter>
     </StyledModal>
   );
@@ -49,7 +44,7 @@ const ModalFooter = styled(Flex)`
   justify-content: flex-end !important;
   gap: 16px;
 
-  ${Button} {
+  button {
     width: unset;
     padding: 0 12px;
     font-weight: 600;

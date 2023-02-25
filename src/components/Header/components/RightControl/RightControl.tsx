@@ -1,41 +1,30 @@
 import React, { useEffect } from 'react';
 
-import { Button, Flex, Keycap, Text } from 'components/UIkit';
+import { Flex, Keycap, Text } from 'components/UIkit';
 import { HelpIc, NotificationIc, PlusIc, TrendingUpIc } from 'components/Icons';
 import Avatar from 'components/Avatar';
 
 import useModal from 'hooks/useModal';
 import TaskModal from './components/TaskModal';
-import Tooltip from 'components/Tooltip';
+import Button from 'components/Button';
+import styled from 'styled-components';
 
 const RightControl = () => {
   const [handlePresent, onDismiss] = useModal(<TaskModal />);
   return (
     <Flex gridGap="5px" px="12px">
-      <Tooltip
-        handler={
-          <Button transparentBg width={32} height={32} onClick={handlePresent}>
-            <PlusIc />
-          </Button>
-        }
-      >
-        <Flex>
-          Add task <Keycap>Q</Keycap>
-        </Flex>
-      </Tooltip>
-      <Button transparentBg width="fit-content" height={32} p="5px">
-        <TrendingUpIc />
-        <Text ml="5px">0/5</Text>
-      </Button>
-      <Button transparentBg width={32} height={32}>
-        <HelpIc />
-      </Button>
-      <Button transparentBg width={32} height={32}>
-        <NotificationIc />
-      </Button>
+      <StyledButton Icon={PlusIc} onClick={handlePresent} />
+      <StyledButton Icon={TrendingUpIc}>0/5</StyledButton>
+      <StyledButton Icon={HelpIc} />
+      <StyledButton Icon={NotificationIc} />
       <Avatar ml="8px" />
     </Flex>
   );
 };
+
+const StyledButton = styled(Button)`
+  min-width: 32px;
+  height: 32px;
+`;
 
 export default RightControl;

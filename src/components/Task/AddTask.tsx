@@ -1,23 +1,17 @@
-import React from "react";
-import styled, { useTheme } from "styled-components";
+import React from 'react';
+import styled, { useTheme } from 'styled-components';
 
-import { PlusIc } from "components/Icons";
-import { Button, Flex, Text } from "components/UIkit";
-import useClick from "hooks/useClick";
-
-const AddTaskSection = () => {
-  return <div></div>;
-};
+import { PlusIc } from 'components/Icons';
+import { Flex, Text } from 'components/UIkit';
+import useClick from 'hooks/useClick';
+import Button from 'components/Button';
 
 const AddTask = () => {
   const theme: any = useTheme();
-  const isClicked = useClick();
 
   return (
     <StyledAddTask>
-      <Button transparentBg variant="circle" color={theme.color.primary}>
-        <PlusIc />
-      </Button>
+      <Button Icon={PlusIc} />
       <Text>Add task</Text>
     </StyledAddTask>
   );
@@ -34,7 +28,7 @@ const StyledAddTask = styled(Flex)`
     ${Text} {
       color: ${({ theme }) => theme.color.primary};
     }
-    ${Button} {
+    button {
       color: #fff;
       background-color: ${({ theme }) => theme.color.primary};
     }

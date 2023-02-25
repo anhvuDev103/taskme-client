@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components';
 import LeftControl from './components/LeftControl/LeftControl';
 import RightControl from './components/RightControl/RightControl';
 import { Flex } from 'components/UIkit';
+import { StyledButton } from 'components/Button';
 
 interface Props {
   setIsVisible: any;
@@ -20,8 +21,13 @@ const Header = ({ setIsVisible }: Props) => {
 };
 
 const StyledHeader = styled(Flex)`
-  button {
+  ${StyledButton} {
     color: #fff;
+    background-color: transparent;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.baseColor.grayAlpha};
+    }
   }
 `;
 

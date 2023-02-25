@@ -1,1 +1,1 @@
-export { default } from './SidebarDropdown';
+export { default } from './Dropdown';

@@ -7,7 +7,7 @@ export const StyledModal = styled.div`
   padding: ${({ theme }) => theme.radius.large};
   box-shadow: 0 15px 50px 0 rgb(0 0 0 / 35%);
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;

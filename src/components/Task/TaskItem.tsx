@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { useTheme } from 'styled-components';
 
 import Checkbox from 'components/Checkbox/Checkbox';
-import { Button, Flex, Text } from 'components/UIkit';
+import { Flex, Text } from 'components/UIkit';
 import {
   CommentIc,
   DragIc,
@@ -12,14 +12,13 @@ import {
   MiniCommentIc,
   PencilIc,
 } from 'components/Icons';
+import Button from 'components/Button';
 
 const TaskItem = () => {
   const theme: any = useTheme();
   return (
     <StyledTaskItem width="100%">
-      <Button transparentBg width="24px" height="24px" className="draggable-btn">
-        <DragIc />
-      </Button>
+      <Button Icon={DragIc} className="draggable-btn" />
       <Checkbox />
       <TaskInfo>
         <Text mb="3px" lineHeight="21px">
@@ -35,18 +34,10 @@ const TaskItem = () => {
         </Flex>
       </TaskInfo>
       <Option>
-        <Button transparentBg>
-          <PencilIc />
-        </Button>
-        <Button transparentBg>
-          <DueDateIc />
-        </Button>
-        <Button transparentBg>
-          <CommentIc />
-        </Button>
-        <Button transparentBg>
-          <MeatballsMenuSolidIc />
-        </Button>
+        <Button Icon={PencilIc} />
+        <Button Icon={DueDateIc} />
+        <Button Icon={CommentIc} />
+        <Button Icon={MeatballsMenuSolidIc} />
       </Option>
     </StyledTaskItem>
   );

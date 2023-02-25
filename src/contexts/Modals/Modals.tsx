@@ -1,3 +1,4 @@
+import { AnimatePresence, motion, spring } from 'framer-motion';
 import React, { createContext, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
@@ -53,11 +54,27 @@ const Modals = ({ children }: Props) => {
             })}
         </StyledModalWrapper>
       )}
+      <AnimatePresence>
+        {isOpen && (
+          <StyledModalWrapper
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ type: 'Inertia', stiffness: 100 }}
+          >
+            <StyledModalBackdrop onClick={handleDismiss} />
+            {React.isValidElement(content) &&
+              React.cloneElement(content as React.ReactElement, {
+                onDismiss: handleDismiss,
+              })}
+          </StyledModalWrapper>
+        )}
+      </AnimatePresence>
     </Context.Provider>
   );
 };
 
-const StyledModalWrapper = styled.div`
+const StyledModalWrapper = styled(motion.div)`
   position: fixed;
   inset: 0;
   z-index: 999;

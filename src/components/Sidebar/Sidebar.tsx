@@ -6,7 +6,7 @@ import { Box, Flex, Text } from 'components/UIkit';
 import { CalendarIc, FilterIc, InboxIc, TodayIc } from 'components/Icons';
 import { Option } from './types';
 import SidebarItem from './components/SidebarItem';
-import SidebarDropdown from 'components/Dropdown/SidebarDropdown';
+import Collapse from 'components/Collapse';
 import { SIDEBAR_ITEMS } from './feed';
 
 interface Props {
@@ -49,7 +49,7 @@ const Sidebar = ({ isVisible }: Props) => {
             />
           ))}
       </Box>
-      <SidebarDropdown
+      <Collapse
         title="Projects"
         options={OPTIONS}
         renderOption={(option: Option, ref: any) => {

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { forwardRef, ReactElement } from 'react';
 import Tippy from '@tippyjs/react';
 import styled from 'styled-components';
 
@@ -22,4 +22,4 @@ const StyledTooltip = styled(Tippy)`
   color: #fff;
 `;
 
-export default Tooltip;
+export default forwardRef(Tooltip);

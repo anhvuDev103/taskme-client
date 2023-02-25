@@ -1,34 +1,32 @@
 import React from 'react';
 
-import { Button, Flex } from 'components/UIkit';
+import { Flex } from 'components/UIkit';
 import { HomeIc, MenuIc } from 'components/Icons';
 import SearchBox from 'components/SearchBox';
-import { useTheme } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
+import Button from 'components/Button';
 
 interface Props {
   setIsVisible: any;
 }
 
 const LeftControl = ({ setIsVisible }: Props) => {
-  const theme: any = useTheme();
+  const toggleSidebarHandler = () => {
+    setIsVisible((prev: boolean) => !prev);
+  };
 
   return (
     <Flex pl="5px">
-      <Button
-        transparentBg
-        hoverColor={theme.baseColor.grayAlpha}
-        width={28}
-        height={28}
-        onClick={() => setIsVisible((prev: boolean) => !prev)}
-      >
-        <MenuIc />
-      </Button>
-      <Button transparentBg hoverColor={theme.baseColor.grayAlpha} width={28} height={28} ml="4px">
-        <HomeIc />
-      </Button>
+      <StyledButton Icon={MenuIc} onClick={toggleSidebarHandler} />
+      <StyledButton Icon={HomeIc} />
       <SearchBox />
     </Flex>
   );
 };
+
+const StyledButton = styled(Button)`
+  width: 28px;
+  height: 28px;
+`;
 
 export default LeftControl;

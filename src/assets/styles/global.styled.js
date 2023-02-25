@@ -56,6 +56,12 @@ const GlobalStyle = createGlobalStyle`
   #searchBox-popper {
     width: ${({ theme }) => theme.width.searchBox};
   }
+
+  button {
+    border: none;
+    outline: none;
+    padding: 0;
+  }
 `;
 
 export default GlobalStyle;
