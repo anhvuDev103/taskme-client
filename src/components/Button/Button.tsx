@@ -1,15 +1,16 @@
+import { forwardRef } from 'react';
 import styled from 'styled-components';
 
 import { Flex } from 'components/UIkit';
 
-const Button = ({ children, Icon, primary, ...props }: any) => {
+const Button = ({ children, Icon, primary, ...props }: any, ref: any) => {
   const buttonProps = {
     primary,
     ...props,
   };
 
   return (
-    <StyledButton {...buttonProps}>
+    <StyledButton {...buttonProps} ref={ref}>
       <Flex>
         {Icon && <Icon />} {children && <span className="button-label">{children}</span>}
       </Flex>
@@ -25,11 +26,15 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 0 6px;
 
   .button-label {
     font-weight: 600;
     font-size: 12px;
-    margin: 0 6px 0 3px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   svg {
@@ -37,4 +42,4 @@ export const StyledButton = styled.button`
   }
 `;
 
-export default Button;
+export default forwardRef(Button);

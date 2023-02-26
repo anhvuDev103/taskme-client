@@ -36,55 +36,55 @@ interface StyleButton extends StyleProps {
 }
 
 //BUTTON
-const buttonVariant = ({ theme }: any) =>
-  variant({
-    variants: {
-      outline: {
-        border: '1px solid #dddddd',
-      },
-      primary: {
-        backgroundColor: theme.color.primary,
-        color: '#fff',
+// const buttonVariant = ({ theme }: any) =>
+//   variant({
+//     variants: {
+//       outline: {
+//         border: '1px solid #dddddd',
+//       },
+//       primary: {
+//         backgroundColor: theme.color.primary,
+//         color: '#fff',
 
-        '&:hover': {
-          backgroundColor: '#b03d32',
-        },
-      },
-      circle: {
-        width: '17px',
-        height: '17px',
-        borderRadius: theme.radius.full,
-      },
-    },
-  });
+//         '&:hover': {
+//           backgroundColor: '#b03d32',
+//         },
+//       },
+//       circle: {
+//         width: '17px',
+//         height: '17px',
+//         borderRadius: theme.radius.full,
+//       },
+//     },
+//   });
 
-export const StyledButton = styled('button')<StyleButton>`
-  width: ${({ fullWidth }) => (fullWidth ? 'fit-content' : '28px')};
-  height: 28px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+// export const StyledButton = styled('button')<StyleButton>`
+//   width: ${({ fullWidth }) => (fullWidth ? 'fit-content' : '28px')};
+//   height: 28px;
+//   display: inline-flex;
+//   justify-content: center;
+//   align-items: center;
 
-  font-size: 12px;
-  padding: 0;
-  color: ${({ theme }) => theme.color.gray};
-  border-radius: ${({ theme }) => theme.radius.tiny};
-  background-color: ${({ transparentBg }) => (transparentBg ? 'transparent' : '#e5e5e5')};
-  border: none;
-  outline: none;
-  cursor: pointer;
+//   font-size: 12px;
+//   padding: 0;
+//   color: ${({ theme }) => theme.color.gray};
+//   border-radius: ${({ theme }) => theme.radius.tiny};
+//   background-color: ${({ transparentBg }) => (transparentBg ? 'transparent' : '#e5e5e5')};
+//   border: none;
+//   outline: none;
+//   cursor: pointer;
 
-  &:hover {
-    background-color: ${({ theme, hoverColor }) => hoverColor || theme.color.mediumGray};
-  }
+//   &:hover {
+//     background-color: ${({ theme, hoverColor }) => hoverColor || theme.color.mediumGray};
+//   }
 
-  ${color}
-  ${space}
-  ${typography}
-  ${layout}
-  ${flexbox}
-  ${buttonVariant}
-`;
+//   ${color}
+//   ${space}
+//   ${typography}
+//   ${layout}
+//   ${flexbox}
+//   ${buttonVariant}
+// `;
 
 //LAYOUTS
 export const Box = styled.div<StyleProps>`

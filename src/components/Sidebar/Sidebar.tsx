@@ -2,8 +2,7 @@ import React from 'react';
 import styled, { useTheme } from 'styled-components';
 import { motion } from 'framer-motion';
 
-import { Box, Flex, Text } from 'components/UIkit';
-import { CalendarIc, FilterIc, InboxIc, TodayIc } from 'components/Icons';
+import { Box, Flex } from 'components/UIkit';
 import { Option } from './types';
 import SidebarItem from './components/SidebarItem';
 import Collapse from 'components/Collapse';

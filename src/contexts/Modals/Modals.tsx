@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, spring } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { createContext, useCallback, useState } from 'react';
 import styled from 'styled-components';
 

@@ -1,9 +1,10 @@
-import { CheckIc } from 'components/Icons';
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { CheckIc } from 'components/Icons';
+
 const Checkbox = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
   return (
     <StyledCheckbox>
       <CheckIc />

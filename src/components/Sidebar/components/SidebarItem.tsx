@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import styled, { useTheme } from 'styled-components';
 
-import { Box, Flex, Text } from 'components/UIkit';
+import { Box, Flex } from 'components/UIkit';
 import { SidebarItemType } from '../types';
 import { NavLink } from 'react-router-dom';
 import { DotIc } from 'components/Icons';

@@ -26,7 +26,8 @@ const TaskItem = () => {
         </Text>
         <Flex gridGap="8px">
           <Flex color={theme.color.primary}>
-            <MiniCalendarIc /> 16 Feb
+            <MiniCalendarIc />
+            <Text fontSize="12px">16 Feb</Text>
           </Flex>
           <Flex gridGap="2px">
             <MiniCommentIc />1

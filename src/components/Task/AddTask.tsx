@@ -25,16 +25,22 @@ const StyledAddTask = styled(Flex)`
     ${Text} {
       color: ${({ theme }) => theme.color.primary};
     }
-    button {
+
+    ${StyledButton} {
       color: #fff;
       background-color: ${({ theme }) => theme.color.primary};
     }
   }
 
-  > ${StyledButton} {
+  ${Text} {
+    color: ${({ theme }) => theme.color.gray};
+  }
+
+  ${StyledButton} {
     width: 18px;
     height: 18px;
     border-radius: ${({ theme }) => theme.radius.full};
+    color: ${({ theme }) => theme.color.primary};
 
     svg {
       width: 18px;
