@@ -12,7 +12,7 @@ import Button, { StyledButton } from 'components/Button';
 
 const RenderRecentlySearch = ({ ...attrs }) => {
   return (
-    <StyledPopperWrapper {...attrs}>
+    <PopperWrapper padding="0" {...attrs}>
       <Text color="#202020" fontWeight="bold" fontSize="13px" p="10px">
         Recently viewed
       </Text>
@@ -25,7 +25,7 @@ const RenderRecentlySearch = ({ ...attrs }) => {
             </RestyledLink>
           ))}
       </Flex>
-    </StyledPopperWrapper>
+    </PopperWrapper>
   );
 };
 
@@ -151,7 +151,4 @@ const RestyledLink = styled(StyledLink)`
   }
 `;
 
-const StyledPopperWrapper = styled(PopperWrapper)`
-  padding: 0;
-`;
 export default SearchBox;

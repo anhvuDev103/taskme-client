@@ -8,6 +8,7 @@ import useModal from 'hooks/useModal';
 import CommentModal from './components/CommentModal';
 import AddTask from 'components/Task/AddTask';
 import Button, { StyledButton } from 'components/Button';
+import AddTaskSection from 'components/Task/AddTaskSection';
 
 const Inbox = () => {
   const [handlePresent] = useModal(
@@ -37,6 +38,7 @@ const Inbox = () => {
       <PageBody flexDirection="column">
         <TaskItem />
         <AddTask />
+        <AddTaskSection />
       </PageBody>
     </InboxLayout>
   );

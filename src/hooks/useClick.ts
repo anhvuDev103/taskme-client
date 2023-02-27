@@ -5,14 +5,13 @@ const useClick = (...selectors: string[]) => {
 
   const clickHandler = useCallback(
     (event: any) => {
-      console.log(selectors.join());
       if (event.target.closest(selectors.join())) {
         setIsClicked(true);
       } else {
         setIsClicked(false);
       }
     },
-    [JSON.stringify(selectors)]
+    [selectors]
   );
 
   useEffect(() => {

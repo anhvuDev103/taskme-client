@@ -1,18 +1,21 @@
-import { forwardRef } from 'react';
 import styled from 'styled-components';
 
 import { Flex } from 'components/UIkit';
+import { forwardRef } from 'react';
 
-const Button = ({ children, Icon, primary, ...props }: any, ref: any) => {
+const Button = ({ children, Icon, variant, primary, sizeIcon = 24, ...props }: any, ref: any) => {
   const buttonProps = {
     primary,
     ...props,
   };
 
   return (
-    <StyledButton {...buttonProps} ref={ref}>
+    <StyledButton {...buttonProps} ref={ref} className={variant}>
       <Flex>
-        {Icon && <Icon />} {children && <span className="button-label">{children}</span>}
+        {Icon && (
+          <Icon width={sizeIcon} height={sizeIcon} viewBox={`0 0 ${sizeIcon} ${sizeIcon}`} />
+        )}{' '}
+        {children && <span className="button-label">{children}</span>}
       </Flex>
     </StyledButton>
   );
@@ -39,6 +42,20 @@ export const StyledButton = styled.button`
 
   svg {
     flex-shrink: 0;
+  }
+
+  //variants
+  &.outline {
+    height: 28px;
+    color: ${({ theme }) => theme.baseColor.grayAlphaSecondary};
+    border: 1px solid ${({ theme }) => theme.color.mediumGray};
+    background-color: transparent;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 3px;
+    }
   }
 `;
 
