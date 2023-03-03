@@ -3,14 +3,19 @@ import styled from 'styled-components';
 import { Flex } from 'components/UIkit';
 import { forwardRef } from 'react';
 
-const Button = ({ children, Icon, variant, primary, sizeIcon = 24, ...props }: any, ref: any) => {
+const Button = (
+  { children, className, Icon, primary, sizeIcon = 24, variant = '', ...props }: any,
+  ref: any
+) => {
   const buttonProps = {
     primary,
     ...props,
   };
 
+  const buttonClass = `${className} ${variant}`;
+
   return (
-    <StyledButton {...buttonProps} ref={ref} className={variant}>
+    <StyledButton {...buttonProps} ref={ref} className={buttonClass}>
       <Flex>
         {Icon && (
           <Icon width={sizeIcon} height={sizeIcon} viewBox={`0 0 ${sizeIcon} ${sizeIcon}`} />

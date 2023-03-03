@@ -30,6 +30,7 @@ const Collapse = ({ title, renderOption, options }: Props) => {
         <Text>{title}</Text>
         <Button Icon={PlusIc} />
         <Button
+          sizeIcon={16}
           Icon={DownChevronIc}
           className="chevron-btn"
           onClick={() => setIsVisible((prev) => !prev)}

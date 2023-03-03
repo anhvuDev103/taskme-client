@@ -22,6 +22,8 @@ import { default as MeatballsMenuSolidIc } from './components/MeatballsMenuSolid
 import { default as PencilIc } from './components/Pencil';
 import { default as CheckIc } from './components/Check';
 import { default as DragIc } from './components/Drag';
+import { default as FlagIc } from './components/Flag';
+import { default as DownChevronTriangleIc } from './components/DownChevronTriangle';
 
 export {
   MenuIc,
@@ -48,4 +50,6 @@ export {
   PencilIc,
   CheckIc,
   DragIc,
+  FlagIc,
+  DownChevronTriangleIc,
 };

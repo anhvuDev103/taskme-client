@@ -24,7 +24,10 @@ const TaskItem = () => {
         <Text mb="3px" lineHeight="21px">
           title task
         </Text>
-        <Flex gridGap="8px">
+        <Text mb="3px" lineHeight="21px">
+          Lorem ipsum dolor, sit amet
+        </Text>
+        <TaskDeadline gridGap="8px">
           <Flex color={theme.color.primary}>
             <MiniCalendarIc />
             <Text fontSize="12px">16 Feb</Text>
@@ -32,7 +35,7 @@ const TaskItem = () => {
           <Flex gridGap="2px">
             <MiniCommentIc />1
           </Flex>
-        </Flex>
+        </TaskDeadline>
       </TaskInfo>
       <Option>
         <Button Icon={PencilIc} />
@@ -43,6 +46,10 @@ const TaskItem = () => {
     </StyledTaskItem>
   );
 };
+
+const TaskDeadline = styled(Flex)`
+  justify-content: flex-start;
+`;
 
 const TaskInfo = styled.div`
   margin-right: auto;

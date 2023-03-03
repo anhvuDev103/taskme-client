@@ -1,13 +1,16 @@
-import React, { FC, isValidElement, useCallback, useEffect, useState } from 'react';
+import React, { FC, isValidElement, useCallback, useEffect, useId, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import Button from 'components/Button';
 import Popper, { PopperWrapper } from 'components/Popper';
 import { Text } from 'components/UIkit';
+import { CheckIc, DownChevronTriangleIc } from 'components/Icons';
+import useClick from 'hooks/useClick';
 
-interface DropdownTitle {
+export interface DropdownTitle {
   label: string;
   icon?: FC;
+  color?: string;
 }
 
 interface DropdownOption extends DropdownTitle {
@@ -15,65 +18,114 @@ interface DropdownOption extends DropdownTitle {
 }
 
 interface Props {
-  title: DropdownTitle;
+  title?: string;
+  titleIcon?: FC;
+  hasArrow?: boolean;
   options: DropdownOption[];
-  defaultOption?: string;
+  currentOption: DropdownOption;
   setOption: (option: any) => void;
 }
 
 interface OptionProps {
-  value: string;
+  // value: string;
+  color?: string;
   label: string;
   Icon?: FC;
+  isSelected: boolean;
   setOption: () => void;
 }
 
-const Option = ({ value, label, Icon, setOption }: OptionProps) => {
+const Option = ({ color, label, Icon, isSelected, setOption }: OptionProps) => {
   return (
-    <OptionWrapper onClick={setOption}>
+    <OptionWrapper onClick={setOption} color={color} className={`${isSelected ? 'selected' : ''}`}>
       {Icon && isValidElement(<Icon />) && <Icon />}
       <Text>{label}</Text>
     </OptionWrapper>
   );
 };
 
-const Dropdown = ({ title, options, defaultOption, setOption }: Props) => {
-  const renderOptions = useCallback(() => {
-    return (
-      <PopperWrapper padding="0">
-        {options.length > 0 &&
-          options.map((option) => {
-            const value = option.value || option.label.toLowerCase();
-            return (
-              <Option
-                key={value}
-                Icon={option.icon}
-                label={option.label}
-                value={value}
-                setOption={() => setOption({ ...option, value })}
-              />
-            );
-          })}
-      </PopperWrapper>
-    );
-  }, [options, setOption]);
+const Dropdown = ({ title, titleIcon, hasArrow, options, currentOption, setOption }: Props) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [label, setLabel] = useState(title);
+  const isClicked = useClick('.Dropdown-handler');
+
+  const selectOptionHandler = useCallback(
+    (option: DropdownOption, value: string) => {
+      setOption({ ...option, value });
+      setIsVisible(false);
+      setLabel(option.label);
+    },
+    [setOption]
+  );
+
+  useEffect(() => {
+    setIsVisible(isClicked);
+  }, [isClicked]);
+
+  const renderOptions = useCallback(
+    (attrs: any) => {
+      return (
+        <PopperWrapper padding="0" {...attrs}>
+          {options.length > 0 &&
+            options.map((option) => {
+              const value = option.value || option.label.toLowerCase();
+              return (
+                <Option
+                  key={value}
+                  Icon={option.icon}
+                  label={option.label}
+                  color={option.color}
+                  isSelected={value === currentOption.value}
+                  // value={value}
+                  setOption={() => selectOptionHandler(option, value)}
+                />
+              );
+            })}
+        </PopperWrapper>
+      );
+    },
+    [options, currentOption, selectOptionHandler]
+  );
 
   return (
     <Wrapper>
       <Popper
-        trigger="click"
+        visible={isVisible}
         interactive={true}
         offset={[0, 4]}
         placement="bottom-start"
-        render={(attrs) => renderOptions()}
+        render={(attrs) => renderOptions(attrs)}
       >
-        <Button variant="outline" Icon={title.icon}>
-          {title.label}
-        </Button>
+        <Handler
+          className="Dropdown-handler"
+          variant="outline"
+          color={label === title ? null : currentOption.color}
+          Icon={titleIcon}
+        >
+          {label} {hasArrow && <DownChevronTriangleIc className="Dropdown-arrow" />}
+        </Handler>
       </Popper>
     </Wrapper>
   );
 };
+
+const Handler = styled(Button)`
+  color: ${({ color }) => color || 'unset'} !important;
+
+  .button-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .Dropdown-arrow {
+    margin-right: 0 !important;
+  }
+
+  svg {
+    fill: none;
+  }
+`;
 
 const Wrapper = styled.div``;
 
@@ -86,8 +138,19 @@ const OptionWrapper = styled.div`
   gap: 8px;
   cursor: pointer;
 
+  &.selected {
+    &::after {
+      content: '✔';
+      padding-left: 8px;
+    }
+  }
+
   &:hover {
     background-color: ${({ theme }) => theme.color.mediumGray};
+  }
+
+  svg {
+    color: ${({ color }) => color || 'unset'};
   }
 `;
 
