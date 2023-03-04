@@ -46,7 +46,7 @@ const Inbox = () => {
 
 const InboxLayout = styled(PageLayout)`
   ${StyledButton} {
-    background-color: transparent;
+    /* background-color: transparent; */
 
     &:hover {
       background-color: ${({ theme }) => theme.color.mediumGray};

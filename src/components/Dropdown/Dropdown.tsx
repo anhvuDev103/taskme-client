@@ -1,11 +1,11 @@
 import React, { FC, isValidElement, useCallback, useEffect, useId, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 import Button from 'components/Button';
 import Popper, { PopperWrapper } from 'components/Popper';
 import { Text } from 'components/UIkit';
-import { CheckIc, DownChevronTriangleIc } from 'components/Icons';
-import useClick from 'hooks/useClick';
+import { DotIc, DownChevronTriangleIc } from 'components/Icons';
+import useClickRef from 'hooks/useClickRef';
 
 export interface DropdownTitle {
   label: string;
@@ -24,6 +24,7 @@ interface Props {
   options: DropdownOption[];
   currentOption: DropdownOption;
   setOption: (option: any) => void;
+  className?: string;
 }
 
 interface OptionProps {
@@ -38,16 +39,26 @@ interface OptionProps {
 const Option = ({ color, label, Icon, isSelected, setOption }: OptionProps) => {
   return (
     <OptionWrapper onClick={setOption} color={color} className={`${isSelected ? 'selected' : ''}`}>
-      {Icon && isValidElement(<Icon />) && <Icon />}
+      {(Icon && isValidElement(<Icon />) && <Icon />) || <DotIc />}
       <Text>{label}</Text>
     </OptionWrapper>
   );
 };
 
-const Dropdown = ({ title, titleIcon, hasArrow, options, currentOption, setOption }: Props) => {
+const Dropdown = ({
+  title,
+  titleIcon,
+  hasArrow,
+  options,
+  currentOption,
+  setOption,
+  className,
+}: Props) => {
   const [isVisible, setIsVisible] = useState(false);
   const [label, setLabel] = useState(title);
-  const isClicked = useClick('.Dropdown-handler');
+  const ref = useRef(null);
+  const isClicked = useClickRef(ref);
+  const theme: any = useTheme();
 
   const selectOptionHandler = useCallback(
     (option: DropdownOption, value: string) => {
@@ -88,7 +99,7 @@ const Dropdown = ({ title, titleIcon, hasArrow, options, currentOption, setOptio
   );
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Popper
         visible={isVisible}
         interactive={true}
@@ -99,8 +110,9 @@ const Dropdown = ({ title, titleIcon, hasArrow, options, currentOption, setOptio
         <Handler
           className="Dropdown-handler"
           variant="outline"
-          color={label === title ? null : currentOption.color}
-          Icon={titleIcon}
+          color={label === title ? theme.baseColor.grayAlphaSecondary : currentOption.color}
+          Icon={label === title ? DotIc : titleIcon}
+          ref={ref}
         >
           {label} {hasArrow && <DownChevronTriangleIc className="Dropdown-arrow" />}
         </Handler>
@@ -142,6 +154,7 @@ const OptionWrapper = styled.div`
     &::after {
       content: '✔';
       padding-left: 8px;
+      margin-left: auto;
     }
   }
 

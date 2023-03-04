@@ -4,7 +4,7 @@ import { Flex } from 'components/UIkit';
 import { forwardRef } from 'react';
 
 const Button = (
-  { children, className, Icon, primary, sizeIcon = 24, variant = '', ...props }: any,
+  { children, className = '', Icon, primary, sizeIcon = 24, variant = '', ...props }: any,
   ref: any
 ) => {
   const buttonProps = {

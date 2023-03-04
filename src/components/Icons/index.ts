@@ -24,6 +24,8 @@ import { default as CheckIc } from './components/Check';
 import { default as DragIc } from './components/Drag';
 import { default as FlagIc } from './components/Flag';
 import { default as DownChevronTriangleIc } from './components/DownChevronTriangle';
+import { default as ClockIc } from './components/Clock';
+import { default as MiniDueDateIc } from './components/MiniDueDate';
 
 export {
   MenuIc,
@@ -52,4 +54,6 @@ export {
   DragIc,
   FlagIc,
   DownChevronTriangleIc,
+  ClockIc,
+  MiniDueDateIc,
 };

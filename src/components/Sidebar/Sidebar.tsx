@@ -12,7 +12,7 @@ interface Props {
   isVisible: boolean;
 }
 
-const OPTIONS = [
+export const OPTIONS = [
   {
     label: 'asd',
   },
