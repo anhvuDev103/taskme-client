@@ -2,20 +2,33 @@ import styled from 'styled-components';
 
 import { Flex } from 'components/UIkit';
 import { forwardRef } from 'react';
+import classNames from 'classnames';
 
-const Button = (
-  { children, className = '', Icon, primary, sizeIcon = 24, variant = '', ...props }: any,
-  ref: any
-) => {
+interface Props {
+  children?: React.ReactNode;
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+  Icon?: any;
+  sizeIcon?: number | string;
+  variant?: 'primary' | 'outline' | 'normal';
+  onClick?: () => void;
+}
+
+const Button = (props: Props, ref: any) => {
+  const { children, className, Icon, size = 'md', sizeIcon = 24, variant = '', onClick } = props;
+
   const buttonProps = {
-    primary,
-    ...props,
+    onClick,
   };
 
-  const buttonClass = `${className} ${variant}`;
+  const buttonClasses = classNames({
+    className,
+    [`size-${size}`]: size,
+    [`variant-${variant}`]: variant,
+  });
 
   return (
-    <StyledButton {...buttonProps} ref={ref} className={buttonClass}>
+    <StyledButton {...buttonProps} ref={ref} className={buttonClasses}>
       <Flex>
         {Icon && (
           <Icon width={sizeIcon} height={sizeIcon} viewBox={`0 0 ${sizeIcon} ${sizeIcon}`} />
@@ -27,8 +40,8 @@ const Button = (
 };
 
 export const StyledButton = styled.button`
-  background-color: ${({ theme, primary }: any) => (primary ? theme.color.primary : '#f5f5f5')};
-  color: ${({ theme, primary }: any) => (primary ? '#fff' : theme.color.text)};
+  background-color: #f5f5f5;
+  color: ${({ theme }) => theme.color.gray};
   border-radius: ${({ theme }) => theme.radius.small};
   display: flex;
   justify-content: center;
@@ -50,16 +63,33 @@ export const StyledButton = styled.button`
   }
 
   //variants
-  &.outline {
-    height: 28px;
-    color: ${({ theme }) => theme.baseColor.grayAlphaSecondary};
-    border: 1px solid ${({ theme }) => theme.color.mediumGray};
-    background-color: transparent;
+  &.variant {
+    &-primary {
+      color: #fff;
+      background-color: ${({ theme }) => theme.color.primary};
+    }
 
-    svg {
-      width: 16px;
-      height: 16px;
-      margin-right: 3px;
+    &-outline {
+      height: 28px;
+      color: ${({ theme }) => theme.baseColor.grayAlphaSecondary};
+      border: 1px solid ${({ theme }) => theme.color.mediumGray};
+      background-color: transparent;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 3px;
+      }
+    }
+  }
+
+  //sizes
+  &.size {
+    &-sm {
+      height: 24px;
+    }
+    &-md {
+      height: 32px;
     }
   }
 `;

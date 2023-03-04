@@ -62,10 +62,9 @@ const AddTaskSection = () => {
         />
         <Flex>
           <Button>Cancel</Button>
-          <Button primary>Add task</Button>
+          <Button variant="primary">Add task</Button>
         </Flex>
       </Footer>
-      <Button primary>ahihi</Button>
     </Wrapper>
   );
 };

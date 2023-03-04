@@ -26,13 +26,13 @@ const Inbox = () => {
           Inbox
         </Text>
         <Option>
-          <Button Icon={CommentIc} onClick={handlePresent}>
-            Comments
-          </Button>
-          <Button transparentBg Icon={ConfigIc}>
+          <Button size="sm" Icon={ConfigIc}>
             View
           </Button>
-          <Button Icon={MeatballsMenuIc} />
+          <Button size="sm" Icon={CommentIc} onClick={handlePresent}>
+            Comments
+          </Button>
+          <Button size="sm" Icon={MeatballsMenuIc} />
         </Option>
       </PageHeader>
       <PageBody flexDirection="column">

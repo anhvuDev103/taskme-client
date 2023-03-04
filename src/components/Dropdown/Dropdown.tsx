@@ -121,7 +121,7 @@ const Dropdown = ({
   );
 };
 
-const Handler = styled(Button)`
+const Handler = styled(Button)<{ color: string }>`
   color: ${({ color }) => color || 'unset'} !important;
 
   .button-label {

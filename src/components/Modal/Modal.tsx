@@ -23,7 +23,7 @@ const Modal = ({ title, children, onAgree, agreeText = 'Done', onCancel }: Props
       <ModalContent>{children}</ModalContent>
       <ModalFooter>
         <Button onClick={onCancel}>Cancel</Button>
-        <Button primary onClick={onAgree}>
+        <Button variant="primary" onClick={onAgree}>
           {agreeText}
         </Button>
       </ModalFooter>

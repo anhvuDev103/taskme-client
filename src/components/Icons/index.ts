@@ -27,6 +27,11 @@ import { default as DownChevronTriangleIc } from './components/DownChevronTriang
 import { default as ClockIc } from './components/Clock';
 import { default as MiniDueDateIc } from './components/MiniDueDate';
 
+export interface IconProps {
+  width?: string | number;
+  height?: string | number;
+}
+
 export {
   MenuIc,
   HomeIc,
