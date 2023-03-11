@@ -21,8 +21,7 @@ const Button = (props: Props, ref: any) => {
     onClick,
   };
 
-  const buttonClasses = classNames({
-    className,
+  const buttonClasses = classNames(className, {
     [`size-${size}`]: size,
     [`variant-${variant}`]: variant,
   });
@@ -49,6 +48,10 @@ export const StyledButton = styled.button`
   cursor: pointer;
   padding: 0 6px;
 
+  &:hover {
+    background-color: #e5e5e5;
+  }
+
   .button-label {
     font-weight: 600;
     font-size: 12px;
@@ -67,6 +70,10 @@ export const StyledButton = styled.button`
     &-primary {
       color: #fff;
       background-color: ${({ theme }) => theme.color.primary};
+
+      &:hover {
+        background-color: #b03d32 !important;
+      }
     }
 
     &-outline {
@@ -90,6 +97,7 @@ export const StyledButton = styled.button`
     }
     &-md {
       height: 32px;
+      padding: 0 12px;
     }
   }
 `;

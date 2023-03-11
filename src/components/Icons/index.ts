@@ -26,6 +26,8 @@ import { default as FlagIc } from './components/Flag';
 import { default as DownChevronTriangleIc } from './components/DownChevronTriangle';
 import { default as ClockIc } from './components/Clock';
 import { default as MiniDueDateIc } from './components/MiniDueDate';
+import { default as LabelIc } from './components/Label';
+import { default as PuzzleIc } from './components/Puzzle';
 
 export interface IconProps {
   width?: string | number;
@@ -61,4 +63,6 @@ export {
   DownChevronTriangleIc,
   ClockIc,
   MiniDueDateIc,
+  LabelIc,
+  PuzzleIc,
 };

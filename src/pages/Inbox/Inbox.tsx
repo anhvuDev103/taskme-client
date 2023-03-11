@@ -56,6 +56,14 @@ const InboxLayout = styled(PageLayout)`
 
 const Option = styled(Flex)`
   gap: 16px;
+
+  ${StyledButton} {
+    background-color: transparent;
+
+    &:last-child {
+      padding: 0;
+    }
+  }
 `;
 
 const PageHeader = styled(Flex)``;

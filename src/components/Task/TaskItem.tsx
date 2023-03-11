@@ -12,7 +12,7 @@ import {
   MiniCommentIc,
   PencilIc,
 } from 'components/Icons';
-import Button from 'components/Button';
+import Button, { StyledButton } from 'components/Button';
 
 const TaskItem = () => {
   const theme: any = useTheme();
@@ -38,10 +38,10 @@ const TaskItem = () => {
         </TaskDeadline>
       </TaskInfo>
       <Option>
-        <Button Icon={PencilIc} />
-        <Button Icon={DueDateIc} />
-        <Button Icon={CommentIc} />
-        <Button Icon={MeatballsMenuSolidIc} />
+        <Button size="sm" Icon={PencilIc} />
+        <Button size="sm" Icon={DueDateIc} />
+        <Button size="sm" Icon={CommentIc} />
+        <Button size="sm" Icon={MeatballsMenuSolidIc} />
       </Option>
     </StyledTaskItem>
   );
@@ -58,6 +58,12 @@ const TaskInfo = styled.div`
 const Option = styled(Flex)`
   opacity: 0;
   transition: 200ms;
+  gap: 8px;
+
+  ${StyledButton} {
+    background-color: transparent;
+    padding: 0;
+  }
 `;
 
 const StyledTaskItem = styled(Flex)`

@@ -1,4 +1,4 @@
-import React, { FC, isValidElement, useCallback, useEffect, useId, useRef, useState } from 'react';
+import React, { FC, isValidElement, useCallback, useEffect, useRef, useState } from 'react';
 import styled, { useTheme } from 'styled-components';
 
 import Button from 'components/Button';
@@ -25,6 +25,7 @@ interface Props {
   currentOption: DropdownOption;
   setOption: (option: any) => void;
   className?: string;
+  size?: 'lg' | 'md' | 'sm';
 }
 
 interface OptionProps {
@@ -53,6 +54,7 @@ const Dropdown = ({
   currentOption,
   setOption,
   className,
+  size = 'md',
 }: Props) => {
   const [isVisible, setIsVisible] = useState(false);
   const [label, setLabel] = useState(title);
@@ -110,6 +112,7 @@ const Dropdown = ({
         <Handler
           className="Dropdown-handler"
           variant="outline"
+          size={size}
           color={label === title ? theme.baseColor.grayAlphaSecondary : currentOption.color}
           Icon={label === title ? DotIc : titleIcon}
           ref={ref}
@@ -123,6 +126,7 @@ const Dropdown = ({
 
 const Handler = styled(Button)<{ color: string }>`
   color: ${({ color }) => color || 'unset'} !important;
+  padding: 0 8px 0 4px !important;
 
   .button-label {
     display: flex;

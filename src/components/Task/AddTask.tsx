@@ -41,6 +41,8 @@ const StyledAddTask = styled(Flex)`
     height: 18px;
     border-radius: ${({ theme }) => theme.radius.full};
     color: ${({ theme }) => theme.color.primary};
+    background-color: transparent;
+    padding: 0;
 
     svg {
       width: 18px;

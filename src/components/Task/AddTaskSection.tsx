@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { PRIORITIES } from './constants';
 import Input from 'components/Input';
 import Dropdown from 'components/Dropdown';
-import { ClockIc, FlagIc, InboxIc, MeatballsMenuSolidIc, MiniDueDateIc } from 'components/Icons';
+import { ClockIc, FlagIc, InboxIc, MiniDueDateIc } from 'components/Icons';
 import styled from 'styled-components';
 import Textarea from 'components/Input/Textarea';
 import { Flex } from 'components/UIkit';
 import Button, { StyledButton } from 'components/Button';
 import { DropdownTitle } from 'components/Dropdown/Dropdown';
+import MoreHandler from './MoreHandler';
 
 export const OPTIONS = [
   {
@@ -31,10 +32,10 @@ const AddTaskSection = () => {
   return (
     <Wrapper>
       <Content>
-        <Input placeholder="Task name" width="100%" />
+        <Input placeholder="Task name" width="100%" mb="8px" />
         <Textarea rows={1} placeholder="Description" />
         <Option>
-          <Button variant="outline" sizeIcon="16" Icon={MiniDueDateIc}>
+          <Button variant="outline" sizeIcon="16" size="sm" Icon={MiniDueDateIc}>
             Due date
           </Button>
           <Dropdown
@@ -43,11 +44,12 @@ const AddTaskSection = () => {
             options={PRIORITIES}
             setOption={setOption}
             currentOption={option}
+            size="sm"
           />
-          <Button variant="outline" sizeIcon="16" Icon={ClockIc}>
+          <Button variant="outline" sizeIcon="16" size="sm" Icon={ClockIc}>
             Reminder
           </Button>
-          <MoreButton variant="outline" Icon={MeatballsMenuSolidIc} />
+          <MoreHandler />
         </Option>
       </Content>
       <Footer>
@@ -60,7 +62,7 @@ const AddTaskSection = () => {
           hasArrow
           className="project-dropdown"
         />
-        <Flex>
+        <Flex gridGap="8px">
           <Button>Cancel</Button>
           <Button variant="primary">Add task</Button>
         </Flex>
@@ -69,18 +71,16 @@ const AddTaskSection = () => {
   );
 };
 
-const MoreButton = styled(Button)`
-  svg {
-    margin-right: 0 !important;
-  }
-`;
-
 const Option = styled(Flex)`
   justify-content: flex-start;
   gap: 8px;
+  margin-top: 8px;
 `;
 
 const Footer = styled(Flex)`
+  padding: 8px 12px 8px 8px;
+  border-top: 1px solid ${({ theme }) => theme.color.mediumGray};
+
   .project-dropdown {
     ${StyledButton} {
       border: none;

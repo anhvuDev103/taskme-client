@@ -12,16 +12,16 @@ const RightControl = () => {
   return (
     <Flex gridGap="5px" px="12px">
       <StyledButton Icon={PlusIc} onClick={handlePresent} />
-      <StyledButton Icon={TrendingUpIc}>0/5</StyledButton>
-      <StyledButton Icon={HelpIc} />
-      <StyledButton Icon={NotificationIc} />
+      <Button Icon={TrendingUpIc}>0/5</Button>
+      <Button Icon={HelpIc} />
+      <Button Icon={NotificationIc} />
       <Avatar ml="8px" />
     </Flex>
   );
 };
 
 const StyledButton = styled(Button)`
-  min-width: 32px;
+  width: 32px;
   height: 32px;
 `;
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Textarea = ({ ...props }) => {
   const inputHandler = (event: any) => {
+    event.target.style.height = 'auto';
     event.target.style.height = `${event.target.scrollHeight}px`;
   };
   return <Wrapper {...props} onInput={inputHandler} />;
